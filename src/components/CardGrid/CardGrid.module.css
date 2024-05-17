@@ -1,0 +1,11 @@
+.grid {
+  flex: 1;
+  display: grid;
+  align-self: stretch;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  border: 1px solid rgba(var(--foreground-rgb), 0.2);
+  margin-top: 2rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
