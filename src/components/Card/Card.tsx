@@ -3,8 +3,10 @@ import React from 'react';
 import CardData from '@/model/CardData';
 import styles from './Card.module.css';
 import JsBarcode, { Options } from 'jsbarcode';
+import Modal from '@/components/Modal';
 
 function Card({ card }: { card: CardData }) {
+  const [ fullView, setFullView ] = React.useState(false);
   const { name, barcode, barcodeType } = card;
   const containerRef = React.useRef<any>();
 
@@ -12,19 +14,39 @@ function Card({ card }: { card: CardData }) {
     const options: Options = {
       format: barcodeType,
       background: 'transparent',
-      lineColor: '#FFFFFF',
-      width: 1,
+      lineColor: 'rgb(0, 9, 72)',
+      width: 2,
+      height: 80,
     }
     JsBarcode(containerRef.current, barcode, options);
   }, [ barcode, barcodeType ]);
 
+  const onCardClick = () => {
+    // Should open the full screen view
+    console.log('onCardClick')
+    setFullView(true);
+  }
+  const onCardClose = () => {
+    console.log('onCardClose')
+    setFullView(false);
+  }
+
   return (
-    <article className={ styles.card }>
-      <h2>{ name }</h2>
-      <div className={ styles.barcode }>
-        <svg ref={ containerRef } style={ { maxWidth: '100%' } }></svg>
-      </div>
-    </article>
+    <>
+      <button className={ styles.card } onClick={ onCardClick }>
+        <h2>{ name }</h2>
+        <div className={ styles.barcode }>
+          <canvas ref={ containerRef } className={ styles.barcodeObject }/>
+        </div>
+      </button>
+      {
+        fullView && <Modal closeModal={ onCardClose }>
+          <div className={ styles.barcode }>
+            <canvas ref={ containerRef } className={ styles.barcodeObject }/>
+          </div>
+        </Modal>
+      }
+    </>
   );
 }
 
