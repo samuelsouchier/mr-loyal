@@ -7,7 +7,6 @@ import { X } from 'react-feather';
 
 function Modal({ children, closeModal }: { children: ReactNode, closeModal: Function }) {
 
-  console.log('init modal')
   return <Portal>
     <ReactFocusLock>
       <RemoveScroll>

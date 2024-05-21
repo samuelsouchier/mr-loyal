@@ -5,7 +5,6 @@ import { BarcodeConfig } from '@/model/BarcodeConfig';
 const useCreateBarcode = (containerRef: React.MutableRefObject<any>, barcode: string, barcodeType: string, config: BarcodeConfig) => {
 
   React.useEffect(() => {
-    console.log('useCreateBarcode');
     const options: Options = {
       format: barcodeType,
       background: 'transparent',

@@ -17,12 +17,9 @@ function Card({ card }: { card: CardData }) {
   useCreateBarcode(containerRef, barcode, barcodeType, barcodeConfig);
 
   const onCardClick = () => {
-    // Should open the full screen view
-    console.log('onCardClick')
     setFullView(true);
   }
   const onCardClose = () => {
-    console.log('onCardClose')
     setFullView(false);
   }
 

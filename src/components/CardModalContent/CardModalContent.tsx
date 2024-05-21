@@ -5,6 +5,7 @@ import { BarcodeConfig } from '@/model/BarcodeConfig';
 import useCreateBarcode from '@/hooks/useCreateBarcode';
 import styles from './CardModalContent.module.css';
 import { Trash } from 'react-feather';
+import IconButton from '@/components/IconButton';
 
 function CardModalContent({ card }: { card: CardData }) {
   const { name, barcode, barcodeType } = card;
@@ -16,15 +17,20 @@ function CardModalContent({ card }: { card: CardData }) {
     width: 3,
   }
 
+  const deleteButtonColor = '#FF6666';
+
   useCreateBarcode(containerRef, barcode, barcodeType, barcodeConfig);
+
+  const handleDeleteCard = () => {
+  }
 
   return <div className={ styles.wrapper }>
     <h2>{ name }</h2>
     <svg ref={ containerRef } className={ styles.barcode }/>
     <div className={ styles.cardActions }>
-      <button>
+      <IconButton onClick={ handleDeleteCard } color={ deleteButtonColor }>
         <Trash/>
-      </button>
+      </IconButton>
     </div>
   </div>;
 }

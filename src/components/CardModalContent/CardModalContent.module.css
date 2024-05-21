@@ -8,8 +8,16 @@
   align-items: center;
   color: rgb(var(--primary-rgb));
   transform: rotate(90deg);
+  gap: 2rem;
 }
 
 .barcode {
   max-width: 100%;
+}
+
+.cardActions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
