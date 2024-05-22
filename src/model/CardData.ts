@@ -1,10 +1,11 @@
-import {BarcodeType} from "@/constants/BarcodeType";
+import { BarcodeType } from '@/constants/BarcodeType';
 
 type CardData = {
-    id: string;
-    name: string;
-    barcode: string;
-    barcodeType: BarcodeType;
+  id: string;
+  name: string;
+  barcode: string;
+  barcodeType: BarcodeType;
+  image?: string;
 }
 
 export default CardData;

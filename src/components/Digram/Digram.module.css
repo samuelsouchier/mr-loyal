@@ -1,0 +1,11 @@
+.digram {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  background: rgb(var(--primary-rgb));
+  color: rgb(var(--white-color-rgb));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}

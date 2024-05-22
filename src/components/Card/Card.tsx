@@ -4,17 +4,12 @@ import CardData from '@/model/CardData';
 import styles from './Card.module.css';
 import Modal from '@/components/Modal';
 import CardModalContent from '@/components/CardModalContent';
-import useCreateBarcode from '@/hooks/useCreateBarcode';
-import { BarcodeConfig } from '@/model/BarcodeConfig';
+import Image from 'next/image';
+import Digram from '@/components/Digram';
 
 function Card({ card }: { card: CardData }) {
   const [ fullView, setFullView ] = React.useState(false);
-  const { name, barcode, barcodeType } = card;
-  const containerRef = React.useRef<HTMLCanvasElement>(null);
-
-  const barcodeConfig: BarcodeConfig = { background: 'transparent', lineColor: 'rgb(0, 9, 72)', width: 2, height: 80 };
-
-  useCreateBarcode(containerRef, barcode, barcodeType, barcodeConfig);
+  const { name, image } = card;
 
   const onCardClick = () => {
     setFullView(true);
@@ -28,7 +23,9 @@ function Card({ card }: { card: CardData }) {
       <button className={ styles.card } onClick={ onCardClick }>
         <h2 className={ styles.cardName }>{ name }</h2>
         <div className={ styles.barcode }>
-          <canvas ref={ containerRef } className={ styles.barcodeObject }/>
+          {
+            image ? <Image src={ `data:image/jpeg;base64, ${ image }` } alt={ name }/> : <Digram name={ name }/>
+          }
         </div>
       </button>
       {

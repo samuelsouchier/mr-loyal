@@ -15,13 +15,13 @@ const CARDS: CardData[] = [
   },
   {
     id: '2',
-    name: 'Card 2',
+    name: 'Loyalty Card 2',
     barcode: '5901234123457',
     barcodeType: BarcodeType.CODE128,
   },
   {
     id: '3',
-    name: 'Card 3',
+    name: 'My Shop',
     barcode: '5901234123457',
     barcodeType: BarcodeType.CODE39,
   },
