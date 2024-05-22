@@ -7,8 +7,12 @@
   justify-content: center;
   align-items: center;
   color: rgb(var(--primary-rgb));
-  transform: rotate(90deg);
   gap: 2rem;
+  padding: 2rem;
+}
+
+.wrapper h2 {
+  text-align: center;
 }
 
 .barcode {
@@ -20,4 +24,18 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+.deleteCardActions button {
+  background: transparent;
+  border-radius: .4rem;
+  padding: .5rem;
+  color: inherit;
+  border: 1px solid rgb(var(--primary-rgb));
+  font-size: 1.2rem;
+}
+
+.deleteCardActions button.buttonDanger {
+  color: rgb(var(--danger-rgb));
+  border-color: rgb(var(--danger-rgb));
 }

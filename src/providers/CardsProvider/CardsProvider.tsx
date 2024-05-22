@@ -4,6 +4,7 @@ import * as React from 'react';
 import { ReactNode } from 'react';
 import CardData from '@/model/CardData';
 import { BarcodeType } from '@/constants/BarcodeType';
+import cardsReducer from '@/reducers/CardsReducer';
 
 const CARDS: CardData[] = [
   {
@@ -35,27 +36,48 @@ const CARDS: CardData[] = [
 interface CardsContextValue {
   cards: CardData[];
 
-  handleCardsChange(newCards: CardData[]): void
+  handleAddCard(newCard: CardData): void;
+
+  handleRemoveCard(cardId: string): void;
 }
 
 export const CardsContext = React.createContext<CardsContextValue>({
   cards: [],
-  handleCardsChange() {
+  handleAddCard() {
+  },
+  handleRemoveCard() {
   },
 });
 
 function CardsProvider({ children }: { children: ReactNode }) {
-  const [ cards, setCards ] = React.useState<CardData[]>([]);
+  const [ cards, dispatch ] = React.useReducer(cardsReducer, []);
 
   const handleCardsChange = (newCards: CardData[]): void => {
-    setCards(newCards);
+    dispatch({
+      type: 'set',
+      cards: newCards,
+    });
+  }
+
+  const handleAddCard = (newCard: CardData): void => {
+    dispatch({
+      type: 'add',
+      newCard,
+    });
+  }
+
+  const handleRemoveCard = (cardId: string): void => {
+    dispatch({
+      type: 'remove',
+      cardId,
+    });
   }
 
   React.useEffect(() => {
-    setCards(CARDS);
+    handleCardsChange(CARDS);
   }, []);
 
-  return <CardsContext.Provider value={ { cards, handleCardsChange } }>
+  return <CardsContext.Provider value={ { cards, handleAddCard, handleRemoveCard } }>
     { children }
   </CardsContext.Provider>;
 }

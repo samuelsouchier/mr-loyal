@@ -1,9 +1,13 @@
 .card {
-  padding: .5rem;
+  padding: 1rem .5rem;
   border-radius: .5rem;
   border: 1px solid rgba(var(--foreground-rgb), 0.2);
   background: rgba(var(--secondary-rgb), 0.9);
   color: rgb(var(--primary-rgb));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
 }
 
 .barcode {

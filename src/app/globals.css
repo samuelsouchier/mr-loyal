@@ -11,6 +11,7 @@
   --background-start: rgb(var(--primary-rgb));
   --background-end: rgb(0, 155, 148);
   --white-color-rgb: 255, 255, 255;
+  --danger-rgb: 255, 0, 0;
 }
 
 * {

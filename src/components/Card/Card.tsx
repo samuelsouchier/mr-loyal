@@ -26,7 +26,7 @@ function Card({ card }: { card: CardData }) {
   return (
     <>
       <button className={ styles.card } onClick={ onCardClick }>
-        <h2>{ name }</h2>
+        <h2 className={ styles.cardName }>{ name }</h2>
         <div className={ styles.barcode }>
           <canvas ref={ containerRef } className={ styles.barcodeObject }/>
         </div>
